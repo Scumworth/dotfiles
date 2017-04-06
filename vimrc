@@ -73,3 +73,29 @@ colorscheme solarized
 autocmd VimEnter * NERDTree
 " with cursor in main window
 autocmd VimEnter * wincmd p
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {"regex": "possibly useless use of a variable in void context"}
+
+
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
