@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set modelines=0
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -45,8 +46,13 @@ set showcmd                     " display incomplete commands
 filetype plugin indent on       " load file type plugins + indentation
 
 "" Whitespace
-set nowrap                      " don't wrap lines
-set tabstop=4 shiftwidth=2      " a tab is two spaces (or set this to 4)
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
+
+"Set tab length
+set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
 "set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
@@ -59,7 +65,7 @@ set smartcase                   " ... unless they contain at least one capital l
 set ruler						" Always show info along bottom	
 set autoindent					" auto-indent
 set number						" show line numbers
-
+set undofile 					" creates undo file so changes persist 
 
 syntax enable
 set t_Co=256					"enable 256-color mode.
@@ -84,6 +90,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+"avoids shifting into colon in normal mode=
+nnoremap ; : 
+
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
@@ -96,3 +105,6 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
+
+" Remap leader key
+let mapleader = ","
