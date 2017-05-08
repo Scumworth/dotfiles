@@ -16,11 +16,14 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdTree'
+Plugin 'scrooloose/nerdcommenter'
 " git-wrapper vim-fugitive
 Plugin 'pangloss/vim-javascript'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
+Plugin 'raimondi/delimitmate'
 Plugin 'scrooloose/syntastic'
+Plugin 'mxw/vim-jsx'
 Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/ScrollColors'
@@ -38,7 +41,7 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
+" see :h vundle for more details or wiki for FAQ									
 " Put your non-Plugin stuff after this line
 "
 set encoding=utf-8
@@ -53,7 +56,7 @@ set colorcolumn=85
 
 "Set tab length
 set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
-"set expandtab                   " use spaces, not tabs (optional)
+set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
 "" Searching
@@ -73,9 +76,9 @@ set background=dark
 colorscheme solarized
 
 " launches NERDTree automatically
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " with cursor in main window
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -108,3 +111,15 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 " Remap leader key
 let mapleader = ","
+
+map <C-n> :NERDTreeToggle<CR>
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
