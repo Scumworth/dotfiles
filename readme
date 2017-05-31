@@ -1,0 +1,4 @@
+To Install:
+  1) move .vim into home directory to install vundle
+  2) Bash makesymlinks.sh
+  3) Open vim and run :PluginInstall to download plugins
