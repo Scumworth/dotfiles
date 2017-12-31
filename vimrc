@@ -88,6 +88,9 @@ let g:html_indent_tags = 'li\|p'
 set splitbelow
 set splitright
 
+" Auto resize splits when window size changed
+:autocmd VimResized * wincmd =
+
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -117,6 +120,10 @@ let mapleader = ","
 
 map <C-n> :NERDTreeToggle<CR>
 
+"cursor highlighting
+:set cursorline
+:nnoremap <Leader>c :set cursorline!<CR>
+
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -126,3 +133,4 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+
