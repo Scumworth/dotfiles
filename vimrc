@@ -30,6 +30,7 @@ Plugin 'vim-scripts/ScrollColors'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'ervandew/supertab'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
