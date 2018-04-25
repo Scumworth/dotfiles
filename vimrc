@@ -119,6 +119,11 @@ nnoremap <Down> :echoe "Use j"<CR>
 " Remap leader key
 let mapleader = ","
 
+" Fixed Directory for backup, undo, and swp
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+
 map <C-n> :NERDTreeToggle<CR>
 
 "cursor highlighting

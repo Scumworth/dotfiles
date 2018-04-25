@@ -7,3 +7,16 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u:\W\$ '
 fi
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+if [ -f ~/.git-flow-completion.bash ]; then
+  . ~/.git-flow-completion.bash
+fi
+
+export PATH="/home/scumworth/anaconda3/bin:$PATH"
+
+# added by travis gem
+[ -f /home/scumworth/.travis/travis.sh ] && source /home/scumworth/.travis/travis.sh
