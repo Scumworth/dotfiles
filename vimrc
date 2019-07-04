@@ -130,6 +130,14 @@ map <C-n> :NERDTreeToggle<CR>
 :set cursorline
 :nnoremap <Leader>c :set cursorline!<CR>
 
+" Sets Hybrid Line Numbers
+:set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
