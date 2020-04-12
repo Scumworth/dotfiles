@@ -3,6 +3,7 @@
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
 # And installs all plugins using vim8 native package system
+# sets up oh-my-zsh
 ############################
 
 ########## Variables
@@ -33,7 +34,20 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+# zsh and oh-my-zsh setup
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
+# source-code-pro font setup
+git clone --depth 1 --branch release https://github.com/adobe-fonts/source-code-pro.git ~/.fonts/adobe-fonts/source-code-pro
+fc-cache -f -v ~/.fonts/adobe-fonts/source-code-pro
+
 # vim plugins
+
+# create vim .undo .swp .backup
+mkdir ~/.vim/.undo 
+mkdir ~/.vim/.swp 
+mkdir ~/.vim/.backup
 
 # create vim 8 package directories
 mkdir -p $startdir
@@ -60,3 +74,7 @@ git clone https://github.com/vim-airline/vim-airline $startdir/vim-airline
 
 # VIM-TMUX-Navigator
 git clone https://github.com/christoomey/vim-tmux-navigator $startdir/vim-tmux-navigator
+
+# vim-instant-markdown
+git clone https://github.com/suan/vim-instant-markdown.git $startdir/vim-instant-markdown
+
