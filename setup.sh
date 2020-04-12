@@ -75,6 +75,9 @@ git clone https://github.com/vim-airline/vim-airline $startdir/vim-airline
 # VIM-TMUX-Navigator
 git clone https://github.com/christoomey/vim-tmux-navigator $startdir/vim-tmux-navigator
 
+# VIM MARKDOWN
+git clone https://github.com/plasticboy/vim-markdown $startdir/vim-markdown
+
 # vim-instant-markdown
 git clone https://github.com/suan/vim-instant-markdown.git $startdir/vim-instant-markdown
 
