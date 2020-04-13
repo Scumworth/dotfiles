@@ -97,10 +97,22 @@ set runtimepath^=~/.vim/pack/git-plugins/start/ctrlp.vim
 " Ale Linters 
 let g:ale_linters = {'python': ['flake8', 'mypy', 'pylint', 'pyls']}
 
+" Vim Markdown Shortcuts
+" zr: reduces fold level throughout the buffer
+" zR: opens all folds
+" zm: increases fold level throughout the buffer
+" zM: folds everything all the way
+" za: open a fold your cursor is on
+" zA: open a fold your cursor is on recursively
+" zc: close a fold your cursor is on
+" zC: close a fold your cursor is on recursively
+
 " Instant Vim Markdown
 "Uncomment to override defaults:
 "let g:instant_markdown_slow = 1
-"let g:instant_markdown_autostart = 0
+let g:instant_markdown_autostart = 0
+" launch preview with :InstantMarkdownPreview
+" close preview with :InstantMarkdownStop
 "let g:instant_markdown_open_to_the_world = 1
 "let g:instant_markdown_allow_unsafe_content = 1
 "let g:instant_markdown_allow_external_content = 0
