@@ -8,13 +8,31 @@
 
 ########## Variables
 
+# check distro
+uname_out="$(uname -s)"
+if [ $uname_out == "Darwin" ] then
+    platform="mac"
+elif [ $uname_out == "Linux" ] then
+    platform="linux"
+else
+    echo "No appropriate platform found. Exiting."
+    exit 1
+fi
+
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc tmux.conf zshrc"    # list of files/folders to symlink in homedir
-optdir=~/.vim/pack/git-plugins/opt           # opt plugin directory
-startdir=~/.vim/pack/git-plugins/start      # start plugin directory
 
-##########
+home_dir="~"
+home_files="bashrc vimrc tmux.conf zshrc"    # list of files/folders to symlink in homedir
+
+vim_plugin_dir="~/.vim
+vim_plugin_files"plugins.vim"
+
+nvim_dir="~/.config/nvim"
+nvim_files="coc-settings.json init.vim" 
+
+alacritty_dir="~/.config/alacritty"
+alacritty_files = "alacritty.yml"
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
@@ -27,57 +45,31 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+for file in $home_files; do
+    echo "Moving any existing home dotfiles from $home_dir to $olddir"
+    mv $home_dir/.$file $home_dir/dotfiles_old/
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -s $dir/$file $home_dir/.$file
+done
+
+for file in $vim_plugin_files; do
+    echo "Moving any existing vim plugin dotfiles from $vim_plugin_dir to $olddir"
+    mv $vim_plugin_dir/$file $home_dir/dotfiles_old
+done
+
+for file in $nvim_files; do
+    echo "Moving any existing nvim files from $nvim_dir to $olddir"
+done
+
+for file in $alacritty_files; do
+    echo "Moving any existing alacritty files from $alacritty_dir to $olddir"
 done
 
 # zsh and oh-my-zsh setup
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-# source-code-pro font setup
-git clone --depth 1 --branch release https://github.com/adobe-fonts/source-code-pro.git ~/.fonts/adobe-fonts/source-code-pro
-fc-cache -f -v ~/.fonts/adobe-fonts/source-code-pro
-
-# vim plugins
-
 # create vim .undo .swp .backup
 mkdir ~/.vim/.undo 
 mkdir ~/.vim/.swp 
 mkdir ~/.vim/.backup
-
-# create vim 8 package directories
-mkdir -p $startdir
-mkdir -p $optdir
-
-# Ale
-git clone --depth 1 https://github.com/dense-analysis/ale.git $startdir/ale 
-
-# Nerdree
-git clone https://github.com/preservim/nerdtree.git $startdir/nerdtree
-vim -u NONE -c "$startdir/nerdtree/doc" -c q
-
-# Color Scheme
-git clone https://github.com/morhetz/gruvbox.git $startdir/gruvbox
-
-# CTRLP
-git clone https://github.com/ctrlpvim/ctrlp.vim.git $startdir/ctrlp.vim
-
-#VIM-JAVASCRIPT
-git clone https://github.com/pangloss/vim-javascript.git $startdir/vim-javascript
-
-#VIM-Airline
-git clone https://github.com/vim-airline/vim-airline $startdir/vim-airline
-
-# VIM-TMUX-Navigator
-git clone https://github.com/christoomey/vim-tmux-navigator $startdir/vim-tmux-navigator
-
-# VIM MARKDOWN
-git clone https://github.com/plasticboy/vim-markdown $startdir/vim-markdown
-
-# vim-instant-markdown
-git clone https://github.com/suan/vim-instant-markdown.git $startdir/vim-instant-markdown
-
