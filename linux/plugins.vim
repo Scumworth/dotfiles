@@ -21,4 +21,6 @@ Plug 'mileszs/ack.vim'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'epmatsw/ag.vim'
 Plug 'kassio/neoterm'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 call plug#end()

@@ -55,6 +55,10 @@ set ruler                                               " Always show info along
 set number                                              " show line numbers
 set undofile                                    " creates undo file so changes persist 
 
+" Ranger
+let g:NERDTreeHijackNetrw = 0 " add this line if you use NERDTree
+let g:ranger_replace_netrw = 1 " open ranger when vim opens a directory
+
 " launches NERDTree automatically " autocmd VimEnter * NERDTree
 " with cursor in main window
 " autocmd VimEnter * wincmd p
