@@ -1,0 +1,343 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set modelines=0
+
+"" Place Plugins Below
+so ~/.vim/plugins.vim
+"" Non Plugins Below
+
+"" Clipboard
+set clipboard=unnamed
+
+" Matchit
+runtime macros/matchit.vim
+
+"" Mouse
+set mouse=a
+
+" Console log from insert mode; Puts focus inside parentheses
+imap cll console.log();<Esc>==f(a
+" Console log from visual mode on next line, puts visual selection inside parentheses
+vmap cll yocll<Esc>p
+" Console log from normal mode, inserted on next line with word your on inside parentheses
+nmap cll yiwocll<Esc>p 
+
+set encoding=utf-8
+set showcmd     " display incomplete commands
+filetype plugin indent on   " load file type plugins + indentation
+set autoindent                                  " auto-indent
+
+"" Whitespace
+set nowrap
+"" set textwidth=79
+set formatoptions=qrn1
+"" set colorcolumn=85
+
+"Set tab length
+set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
+set expandtab                   " use spaces, not tabs (optional)
+set backspace=indent,eol,start  " backspace through everything in insert mode
+
+"" Rainbow Parens
+let g:rainbow_active = 1
+
+"" Neoterm
+let g:neoterm_default_mod = 'botright'
+
+"" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
+
+"" Relooad buffer when file changes on disk
+set autoread
+au CursorHold * checktime 
+
+set ruler                                               " Always show info along bottom 
+set number                                              " show line numbers
+set undofile                                    " creates undo file so changes persist 
+
+" launches NERDTred automatically " autocmd VimEnter * NERDTree
+" with cursor in main window
+" autocmd VimEnter * wincmd p
+map <C-n> :NERDTreeToggle<CR> <bar> <C-w>=
+" NERD tree width
+:let g:NERDTreeWinSize=40
+
+" NERD tree close if last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Prevent fzf from opening in nerdtree
+au BufEnter * if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree' && winnr('$') > 1 | b# | exe "normal! \<c-w>\<c-w>" | :blast | endif
+
+" fzf
+set rtp+=~/.fzf
+let g:fzf_layout = { 'down': '~40%' }
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-f> :Rg<CR>
+nnoremap <silent> <Leader>/ :BLines<CR>
+nnoremap <silent> <Leader>' :Marks<CR>
+nnoremap <silent> <Leader>g :Commits<CR>
+nnoremap <silent> <Leader>H :Helptags<CR>
+nnoremap <silent> <Leader>hh :History<CR>
+nnoremap <silent> <Leader>h: :History:<CR>
+nnoremap <silent> <Leader>h/ :History/<CR> 
+        
+" make RG only look at file contents
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" Use ripgrep instead of grep
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+
+
+" Split behavior
+set splitbelow
+set splitright
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" Auto resize splits when window size changed
+:autocmd VimResized * wincmd =
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+""avoids shifting into colon in normal mode=
+nnoremap ; : 
+
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" Remap leader key
+let mapleader = " "
+let maplocalleader = " "
+
+" Fixed Directory for backup, undo, and swp
+set undodir=~/.vim/.undodir//
+set backupdir=~/.vim/.backupdir//
+set directory=~/.vim/.swapdir//
+
+" Dasht
+" search related docsets
+nnoremap <Leader>? :Dasht<Space>
+
+" search ALL the docsets
+nnoremap <Leader><Leader>? :Dasht!<Space>
+
+"cursor highlighting
+" uncomment to default cursorline on
+" set cursorline
+hi CursorLine cterm=NONE ctermbg=black
+hi CursorLineNR cterm=NONE ctermbg=black
+nnoremap <Leader>z :set cursorline!<CR>
+
+ "Sets Hybrid Line Numbers
+:set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
+if exists('$TMUX')
+    " Colors in TMUX
+    let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+endif
+set termguicolors
+set background=dark
+colorscheme iceberg
+
+syntax enable
+
+" Vim Calendar / Vim Wiki integration
+autocmd FileType calendar nmap <buffer> <CR> :<C-u>call vimwiki#diary#calendar_action(b:calendar.day().get_day(), b:calendar.day().get_month(), b:calendar.day().get_year(), b:calendar.day().week(), "V")<CR>
+
+" airline
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰ '
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰ '
+" let g:airline_symbols.maxlinenr = '  '
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=1
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+"if has('nvim-0.4.0') || has('patch-8.2.0750')
+  "nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  "nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  "inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  "vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  "vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
