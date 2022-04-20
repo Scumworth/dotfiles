@@ -24,7 +24,7 @@ fi
 
 new_dir="$HOME/repos/dotfiles/$platform"       # dotfiles directory
 
-home_files="bashrc vimrc tmux.conf zshrc"    # list of files/folders to symlink in homedir
+home_files="bashrc vimrc tmux.conf tmux.conf.local zshrc"    # list of files/folders to symlink in homedir
 
 vim_plugin_dir="$HOME/.vim"
 vim_plugin_files="plugins.vim"
