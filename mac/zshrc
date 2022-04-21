@@ -5,6 +5,11 @@ PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
 export PATH;
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
+# go
+export PATH="$PATH:/usr/local/go/bin"
+# deno 
+export DENO_INSTALL="/home/scumworth/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/danmcninch/.oh-my-zsh"
