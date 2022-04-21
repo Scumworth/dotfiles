@@ -11,7 +11,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # emacs
 export PATH="$HOME/.emacs.d/bin:$PATH"
 # go
-export PATH="$PATH:/usr/local/go/bin"
+export GOPATH=$HOME/go
+export PATH="$PATH:$GOPATH/bin"
 # deno 
 export DENO_INSTALL="/home/scumworth/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
@@ -82,7 +83,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vagrant rust)
+plugins=(git vagrant rust golang tmux sudo)
 
 source $ZSH/oh-my-zsh.sh
 
