@@ -44,7 +44,7 @@ ranger_files="rc.conf"
 
 # move any existing dotfiles in home directory to dotfiles_old directory, then create symlinks 
 for file in $home_files; do
-    if [ -L "${HOME}/.${file}" ]; then
+    if [ -L "$HOME/.${file}" ]; then
         echo "Removing existing symlink ${file}"
         rm $HOME/.$file 
     fi
