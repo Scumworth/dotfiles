@@ -16,6 +16,9 @@ export PATH="$PATH:$GOPATH/bin"
 # deno 
 export DENO_INSTALL="/home/scumworth/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+# ruby
+source /usr/local/share/chruby/chruby.sh 
+chruby 3.1.2
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -83,7 +86,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vagrant rust golang tmux sudo)
+plugins=(git vagrant rust golang tmux sudo ruby)
 
 source $ZSH/oh-my-zsh.sh
 

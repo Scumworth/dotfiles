@@ -1,11 +1,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'sindrets/diffview.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'cocopon/iceberg.vim'
 Plug 'gkeep/iceberg-dark'
-Plug 'olical/conjure'
 Plug 'wlangstroth/vim-racket'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'TimUntersberger/neogit'
