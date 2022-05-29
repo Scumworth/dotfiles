@@ -8,6 +8,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'gkeep/iceberg-dark'
 Plug 'wlangstroth/vim-racket'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'TimUntersberger/neogit'
 Plug 'burntsushi/erd'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
