@@ -1,3 +1,4 @@
 To Install in new environment:
+
   1) sh setup.sh
   2) sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"o
