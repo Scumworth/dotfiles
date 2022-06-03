@@ -11,6 +11,7 @@ Plug 'olical/conjure'
 Plug 'wlangstroth/vim-racket'
 Plug 'burntsushi/erd'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'phaazon/hop.nvim'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vimwiki/vimwiki'

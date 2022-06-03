@@ -13,6 +13,7 @@ Plug 'TimUntersberger/neogit'
 Plug 'burntsushi/erd'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
+Plug 'phaazon/hop.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vimwiki/vimwiki'
 Plug 'scrooloose/nerdcommenter'
