@@ -10,6 +10,7 @@ Plug 'wlangstroth/vim-racket'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'TimUntersberger/neogit'
+Plug 'tpope/vim-sleuth'
 Plug 'burntsushi/erd'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'

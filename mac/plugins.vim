@@ -29,6 +29,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'TimUntersberger/neogit'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-sleuth'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 call plug#end()
