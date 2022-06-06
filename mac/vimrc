@@ -27,6 +27,10 @@ set showcmd     " display incomplete commands
 filetype plugin indent on   " load file type plugins + indentation
 set autoindent                                  " auto-indent
 
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.ts,*.js set filetype=typescriptreact
+
 "" Whitespace
 set nowrap
 "" set textwidth=79
