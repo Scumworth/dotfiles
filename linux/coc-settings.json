@@ -2,6 +2,6 @@
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
   "intelephense.licenceKey": "00EON6UFTYGLMDI",
   "codeLens.enable": true,
-  "suggest.autoTrigger": "none",
-  "coc.preferences.formatOnSaveFiletypes": ["*"]
+  "suggest.autoTrigger": "none"
 }
+
