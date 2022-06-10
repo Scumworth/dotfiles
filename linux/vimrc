@@ -15,6 +15,9 @@ runtime macros/matchit.vim
 "" Mouse
 set mouse=a
 
+"" Close vim if last listable buffer is closed
+:autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+
 " Console log from insert mode; Puts focus inside parentheses
 imap cll console.log();<Esc>==f(a
 " Console log from visual mode on next line, puts visual selection inside parentheses
@@ -59,19 +62,27 @@ set ruler                                               " Always show info along
 set number                                              " show line numbers
 set undofile                                    " creates undo file so changes persist 
 
+"" tab related shortcuts
+nnoremap <silent> <Leader>t <Esc>:tabnew<CR>
+
 " Ranger
 let g:NERDTreeHijackNetrw = 0 " add this line if you use NERDTree
 let g:ranger_replace_netrw = 1 " open ranger when vim opens a directory
 
-" launches NERDTree automatically " autocmd VimEnter * NERDTree
-" with cursor in main window
-" autocmd VimEnter * wincmd p
-map <C-n> :NERDTreeToggle<CR> <bar> <C-w>=
-" NERD tree width
-:let g:NERDTreeWinSize=40
-
-" NERD tree close if last window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Neovim Tree
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+" More available functions:
+" NvimTreeOpen
+" NvimTreeClose
+" NvimTreeFocus
+" NvimTreeFindFileToggle
+" NvimTreeResize
+" NvimTreeCollapse
+" NvimTreeCollapseKeepBuffers
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
 
 " Prevent fzf from opening in nerdtree
 au BufEnter * if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree' && winnr('$') > 1 | b# | exe "normal! \<c-w>\<c-w>" | :blast | endif
