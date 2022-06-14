@@ -1,4 +1,5 @@
 {
-    "suggest.maxCompleteItemCount": 10,
-    "suggest.autoTrigger": "none"
+  "suggest.maxCompleteItemCount": 10,
+  "suggest.autoTrigger": "none",
+  "coc.preferences.formatOnSaveFiletypes": ["js, ts, tsx, jsx"]
 }

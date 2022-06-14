@@ -35,6 +35,10 @@ nvim_files="coc-settings.json init.vim"
 alacritty_dir="$HOME/.config/alacritty"
 alacritty_files="alacritty.yml"
 
+kitty_dir="$HOME/.config/kitty"
+kitty_files="kitty.conf"
+
+
 ranger_dir="$HOME/.config/ranger"
 ranger_files="rc.conf"
 
@@ -74,16 +78,26 @@ for file in $nvim_files; do
 done
 echo "...done"
 
-for file in $alacritty_files; do
-    if [ -L $alacritty_dir/$file ]; then
-        echo "Removing existing symlink ${file} from ${alacritty_dir}"
-        rm $alacritty_dir/$file
+#for file in $alacritty_files; do
+    #if [ -L $alacritty_dir/$file ]; then
+        #echo "Removing existing symlink ${file} from ${alacritty_dir}"
+        #rm $alacritty_dir/$file
+    #fi
+    #echo "Creating new symlink to $file in alacritty config directory."
+    #ln -s $new_dir/$file $alacritty_dir/$file
+#done
+#echo "...done"
+
+for file in $kitty_files; do
+    if [ -L $kitty_dir/$file ]; then
+        echo "Removing existing symlink ${file} from ${kitty_dir}"
+        rm $kitty_dir/$file
     fi
     echo "Creating new symlink to $file in alacritty config directory."
     ln -s $new_dir/$file $alacritty_dir/$file
 done
-echo "...done"
 
+echo "...done"
 for file in $ranger_files; do
     if [ -L $ranger_dir/$file ]; then
         echo "Removing existing symlink ${file} from ${ranger_dir}"
