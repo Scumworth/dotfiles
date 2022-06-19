@@ -10,6 +10,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'gkeep/iceberg-dark'
 Plug 'olical/conjure'
 Plug 'wlangstroth/vim-racket'
+Plug 'ap/vim-css-color'
 Plug 'burntsushi/erd'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'phaazon/hop.nvim'
