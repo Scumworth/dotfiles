@@ -13,10 +13,14 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # ruby
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh # Or run `brew info chruby` to find out installed directory
+# chruby ruby-2.7.4
 chruby ruby-3.1.2
-
+# node
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/danmcninch/.oh-my-zsh"
+export ZSH="/Users/danielmcninch/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME

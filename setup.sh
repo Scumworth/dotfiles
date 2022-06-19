@@ -27,8 +27,19 @@ new_dir="$HOME/repos/dotfiles/$platform"       # dotfiles directory
 home_files="bashrc vimrc tmux.conf zshrc"    # list of files/folders to symlink in homedir
 
 vim_plugin_dir="$HOME/.vim"
+if [ ! -d $vim_plugin_dir ]; then
+    echo "Vim plugin directory not found. Creating..."
+    mkdir -p "$HOME/.vim"
+fi
+
+vim_plugin_dir="$HOME/.vim"
 vim_plugin_files="plugins.vim"
 
+nvim_dir="$HOME/.config/nvim"
+if [ ! -d $nvim_dir ]; then
+    echo "Neovim directory not found. Creating..."
+    mkdir -p $nvim_dir
+fi
 nvim_dir="$HOME/.config/nvim"
 nvim_files="coc-settings.json init.vim" 
 
@@ -93,8 +104,8 @@ for file in $kitty_files; do
         echo "Removing existing symlink ${file} from ${kitty_dir}"
         rm $kitty_dir/$file
     fi
-    echo "Creating new symlink to $file in alacritty config directory."
-    ln -s $new_dir/$file $alacritty_dir/$file
+    echo "Creating new symlink to $file in kitty config directory."
+    ln -s $new_dir/$file $kitty_dir/$file
 done
 
 echo "...done"
