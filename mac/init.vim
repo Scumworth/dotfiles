@@ -6,8 +6,7 @@ lua << EOF
 -- Which-Key
 local wk = require("which-key")
 wk.setup {}
--- Startup
-require("startup").setup({theme = "startify"}) -- put theme name here
+
 -- Neogit
 require("neogit").setup {
     integrations = {
