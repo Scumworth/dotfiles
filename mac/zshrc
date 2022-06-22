@@ -136,3 +136,10 @@ then
     unfunction preexec
     PS1='$ '
 fi
+
+# set work ssh stuff
+if [[ $USER == "danielmcninch" ]]
+then
+    alias ssh-prod="ssh -i ~/pem/prod-v1.pem ec2-user@ssh-prod.crystalknows.com"
+    alias ssh-stag="ssh -i ~/pem/staging-v1.pem ec2-user@ssh-staging.crystalknows.com"
+fi
