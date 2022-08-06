@@ -15,6 +15,9 @@ runtime macros/matchit.vim
 "" Mouse
 set mouse=a
 
+" Enable rufo (RUby FOrmat)
+let g:rufo_auto_formatting = 1
+
 " Console log from insert mode; Puts focus inside parentheses
 imap cll console.log();<Esc>==f(a
 " Console log from visual mode on next line, puts visual selection inside parentheses

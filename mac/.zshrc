@@ -107,10 +107,7 @@ alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v=nvim
 alias vim=nvim
-alias mysqld="mysql --login-path=appdev scan123"
-alias mysqls="mysql --login-path=appstaging scan123"
-alias myclid="mycli --login-path=appdev scan123"
-alias myclis="mycli --login-path=appstaging scan123"
+alias docker-connect="docker exec -it 8001b6297249 /bin/sh"
 
 #emacs sh
 if [[ "$TERM" == "dumb" ]]
