@@ -22,7 +22,7 @@ wk.register({
             name = "Search File"
         }
     },
-    z = {
+    l = {
         name = "Cursorline"
     },
     c = {
