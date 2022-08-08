@@ -36,17 +36,11 @@ wk.register({
     },
     g = {
         name = "Neogit"
-    }
+    },
+    q = {
+        name = "FZF"
+    },
 }, { prefix = "<Leader>"})
-
-wk.register({
-    f = {
-        name = "Search File Content"
-    },
-    p = {
-        name = "Search File Names"
-    },
-}, { prefix = "<CTRL>"})
 
 -- Spectre search
 require('spectre').setup()

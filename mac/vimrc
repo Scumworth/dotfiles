@@ -83,16 +83,18 @@ au BufEnter * if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree' && w
 set rtp+=~/.fzf
 let g:fzf_layout = { 'down': '~40%' }
 
-nnoremap <silent> <Leader>zb :Buffers<CR>
+nnoremap <silent> <Leader>qb :Buffers<CR>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-f> :Rg<CR>
-nnoremap <silent> <Leader>z/ :BLines<CR>
-nnoremap <silent> <Leader>z' :Marks<CR>
-nnoremap <silent> <Leader>zg :Commits<CR>
-nnoremap <silent> <Leader>zH :Helptags<CR>
-nnoremap <silent> <Leader>zhh :History<CR>
-nnoremap <silent> <Leader>zh: :History:<CR>
-nnoremap <silent> <Leader>zh/ :History/<CR> 
+nnoremap <silent> <Leader>qp :Files<CR>
+nnoremap <silent> <Leader>qf :Rg<CR>
+nnoremap <silent> <Leader>q/ :BLines<CR>
+nnoremap <silent> <Leader>q' :Marks<CR>
+nnoremap <silent> <Leader>qg :Commits<CR>
+nnoremap <silent> <Leader>qH :Helptags<CR>
+nnoremap <silent> <Leader>qhh :History<CR>
+nnoremap <silent> <Leader>qh: :History:<CR>
+nnoremap <silent> <Leader>qh/ :History/<CR> 
         
 " make RG only look at file contents
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
@@ -225,21 +227,17 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ?  coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 " Use `[[` and `]]` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
