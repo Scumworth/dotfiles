@@ -12,5 +12,6 @@
     "typescriptreact",
     "ruby"
   ],
-  "solargraph.diagnostics": true
+  "solargraph.diagnostics": true,
+  "suggest.noselect": true
 }
